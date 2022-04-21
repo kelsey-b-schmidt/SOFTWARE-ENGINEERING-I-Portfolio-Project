@@ -10,7 +10,10 @@
 </head>
 
 <body>
-    <div><h1>Welcome to the Sudoku Generator</h1></div>
+    <div>
+        <h1>Welcome to the Sudoku Generator</h1>
+        <h2>Solution Toggled</h2>
+    </div>
 
     <div class="button-group">
         <button type="button" title="Print puzzle">
@@ -39,9 +42,8 @@
 
     <form method="POST">
         <button>
-        <input
-            type="checkbox" name="checkbox" value="1"
-            onChange="this.form.submit()">
+        <input onChange="this.form.submit()"
+               type="checkbox" name="nameOfChoice" value="1" checked="checked">
         </button>
     </form>
     <br>

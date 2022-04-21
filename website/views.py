@@ -10,7 +10,9 @@ views = Blueprint("views", __name__)
 @views.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        return "New puzzle loaded"
+        data = request.data
+        print("DATAAAAAA", data)
+        return render_template("toggle.html")
     return render_template("main.html")
 
 @views.route("/json")
