@@ -15,13 +15,13 @@
     <div class="button-group">
         <button type="button" title="Print puzzle">
             <img src="static/images/printer.png" />
-            Print
+            <span>&nbsp;&nbsp;Print</span>
         </button>
         <br>
 
         <button type="button" title="Download puzzle as PDF">
             <img src="static/images/download.png"/>
-            Download
+            <span>&nbsp;&nbsp;Download</span>
         </button>
         <br>
 
@@ -31,18 +31,27 @@
                          'width=500,height=500');
               return false;">
             <img src="static/images/facebook.png"/>
-            Share
+            <span>&nbsp;&nbsp;Share</span>
         </button>
+        <br>
 
     </div>
 
+    <form method="POST">
+        <button>
+        <input onChange="this.form.submit()"
+               type="checkbox" name="nameOfChoice" value="1">
+        </button>
+    </form>
     <br>
+
+
     <form method="POST">
         <button type="submit"
                 class="button red-hover"
                 title="Erase current game">
         <img src="static/images/new.png"/>
-         New Game
+            <span>&nbsp;&nbsp;New Game</span>
         </button>
     </form>
 
