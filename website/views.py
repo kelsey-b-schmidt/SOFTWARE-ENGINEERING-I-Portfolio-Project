@@ -10,9 +10,12 @@ views = Blueprint("views", __name__)
 @views.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        data = request.data
-        print("DATAAAAAA", data)
-        return render_template("toggle.html")
+        checkbox = request.form.get('checkbox')
+        if checkbox == "1":
+            return render_template("toggle.html")
+        new_game = request.form.get('new_game')
+        if new_game == "1":
+            return render_template("new_game.html")
     return render_template("main.html")
 
 @views.route("/json")

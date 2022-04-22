@@ -1,5 +1,6 @@
 button {
-    width: 130px;
+    background-color: White;
+    width: 150px;
     text-align: center;
     padding: 10px 13px 10px 8px;
     box-shadow: 0px 2px 3px gray;
@@ -10,11 +11,12 @@ button {
 }
 
 button > img,
+button > input,
 button > span {
   vertical-align: middle;
 }
 
-button:hover {
+button:hover, input:hover {
     background-color: LightGreen;
 }
 
@@ -22,11 +24,15 @@ button:hover {
     background-color: red;
 }
 
-.button-group button {
-    display: block;
+input {
+    cursor: pointer;
 }
 
-.facebook {
-    display: block;
-    background-color:  #17A9FD;
-}
+
+footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: black;
+   text-align: center;

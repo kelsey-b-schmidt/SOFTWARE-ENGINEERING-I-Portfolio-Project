@@ -15,42 +15,54 @@
         <h2>Solution Toggled</h2>
     </div>
 
-    <div class="button-group">
-        <button type="button" title="Print puzzle">
-            <img src="static/images/printer.png" />
-            <span>&nbsp;&nbsp;Print</span>
-        </button>
-        <br>
+    <button type="button" title="Print puzzle">
+        <img src="static/images/printer.png" />
+        <span>&nbsp;&nbsp;Print</span>
+    </button>
+    <br>
+    <br>
 
-        <button type="button" title="Download puzzle as PDF">
-            <img src="static/images/download.png"/>
-            <span>&nbsp;&nbsp;Download</span>
-        </button>
-        <br>
+    <button type="button" title="Download puzzle as PDF">
+        <img src="static/images/download.png"/>
+        <span>&nbsp;&nbsp;Download</span>
+    </button>
+    <br>
+    <br>
 
-        <button class="facebook" type="button" title="Share to Facebook&#10;(opens in new window)"
-        onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2F&amp;src=sdkpreparse',
-                         'newwindow',
-                         'width=500,height=500');
-              return false;">
-            <img src="static/images/facebook.png"/>
-            <span>&nbsp;&nbsp;Share</span>
-        </button>
-        <br>
-
-    </div>
-
-    <form method="POST">
-        <button>
-        <input onChange="this.form.submit()"
-               type="checkbox" name="nameOfChoice" value="1" checked="checked">
-        </button>
-    </form>
+    <button class="facebook" type="button" title="Share to Facebook&#10;(opens in new window)"
+    onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2F&amp;src=sdkpreparse',
+                     'newwindow',
+                     'width=500,height=500');
+          return false;">
+        <img src="static/images/facebook.png"/>
+        <span>&nbsp;&nbsp;Share</span>
+    </button>
+    <br>
     <br>
 
 
     <form method="POST">
-        <button type="submit"
+        <button name="checkbox" value="0">
+        <input type="hidden" name="checkbox" value="0" checked="checked" />
+        <input
+            class="checkbox"
+            type="checkbox" name="null" value="1" checked="checked"
+            onChange="this.form.submit()">
+        <span>&nbsp;&nbsp;Toggle Solution</span>
+        </button>
+    </form>
+    <br>
+
+    <button type="button" title="Learn how to play&#10;(opens in popup)">
+        <img src="static/images/help.png"/>
+        <span>&nbsp;&nbsp;How to Play</span>
+    </button>
+    <br>
+    <br>
+
+    <form method="POST" onsubmit="return confirm('Starting a new game will erase the current game!' + '\n' + 'Do you still wish to proceed?');">
+        <button name="new_game" value="1"
+                type="submit"
                 class="button red-hover"
                 title="Erase current game">
         <img src="static/images/new.png"/>
@@ -58,13 +70,11 @@
         </button>
     </form>
 
-</body>
+    <footer>
+    Uicons by <a href="https://www.flaticon.com/uicons" target="_blank">Flaticon</a>
+    </footer>
 
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0"
-        nonce="tSk27kXF">
-</script>
+</body>
 
 </html>
 
