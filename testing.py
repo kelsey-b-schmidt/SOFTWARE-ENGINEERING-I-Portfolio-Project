@@ -1,11 +1,11 @@
 import json
 
 def read_text():
-    text_file = open('files/testing.txt', 'r')
+    text_file = open('files/button_receiver.txt', 'r')
     read_text = text_file.read()
     text_file.close()
     if read_text != "":
-        print("Text read from 'testing.txt':", read_text)
+        print("Text read from 'button_receiver.txt':", read_text)
     return read_text
 
 

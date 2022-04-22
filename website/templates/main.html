@@ -47,26 +47,14 @@
     <br>
 
     <form method="POST">
-        <button name="checkbox" value="1">
-        <input
-            class="checkbox"
-            type="checkbox" name="checkbox" value={{check_val}}
-            onChange="this.form.submit()">
-        <span>&nbsp;&nbsp;Toggle Solution</span>
-        </button>
-    </form>
-    <br>
-
-    {{check_val}}
-
-    <form method="POST">
         <button name="checkbox" value={{check_val}}
                 type="submit"
                 title="Show/Hide the solution">
-        <img src=src/>
+        <img src={{src}}/>
             <span>&nbsp;&nbsp;Toggle Solution</span>
         </button>
     </form>
+    <br>
 
     <button type="button" title="Learn how to play&#10;(opens in popup)">
         <img src="static/images/help.png"/>

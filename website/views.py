@@ -10,22 +10,22 @@ def home():
         checkbox = request.form.get('checkbox')
         print("checkbox", checkbox)
         if checkbox == "1":
-            with open('files/testing.txt', 'w') as file:
+            with open('files/button_receiver.txt', 'w') as file:
                 file.write("toggle-on")
-            return render_template("main.html", check_val="0")
+            return render_template("main.html", check_val="0", src="static/images/checkbox.png")
         elif checkbox == "0":
-            with open('files/testing.txt', 'w') as file:
+            with open('files/button_receiver.txt', 'w') as file:
                 file.write("toggle-off")
 
         new_game = request.form.get('new_game')
         if new_game == "1":
-            with open('files/testing.txt', 'w') as file:
+            with open('files/button_receiver.txt', 'w') as file:
                 file.write("new_game")
     else:
-        with open('files/testing.txt', 'w') as file:
+        with open('files/button_receiver.txt', 'w') as file:
             file.write("")
 
-    return render_template("main.html", check_val="1", src="static/images/checkbox.png")
+    return render_template("main.html", check_val="1", src="static/images/checkbox_unchecked.png")
 
 #@views.route("/json")
 #def get_json():
