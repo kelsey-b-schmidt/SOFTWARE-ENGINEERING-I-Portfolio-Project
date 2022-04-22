@@ -1,9 +1,6 @@
 from flask import Blueprint
 from flask import render_template
-from flask import jsonify
 from flask import request
-from flask import flash
-
 
 views = Blueprint("views", __name__)
 
@@ -11,18 +8,30 @@ views = Blueprint("views", __name__)
 def home():
     if request.method == "POST":
         checkbox = request.form.get('checkbox')
+        print("checkbox", checkbox)
         if checkbox == "1":
-            return render_template("toggle.html")
+            with open('files/testing.txt', 'w') as file:
+                file.write("toggle-on")
+            return render_template("main.html", check_val="0", src="static/images/checkbox.png")
+        elif checkbox == "0":
+            with open('files/testing.txt', 'w') as file:
+                file.write("toggle-off")
+
         new_game = request.form.get('new_game')
         if new_game == "1":
-            return render_template("new_game.html")
-    return render_template("main.html")
+            with open('files/testing.txt', 'w') as file:
+                file.write("new_game")
+    else:
+        with open('files/testing.txt', 'w') as file:
+            file.write("")
 
-@views.route("/json")
-def get_json():
-    return jsonify({"name": "tim"})
+    return render_template("main.html", check_val="1", src="static/images/checkbox_unchecked.png")
 
-@views.route("/data")
-def get_data():
-    data = request.json
-    return jsonify(data)
+#@views.route("/json")
+#def get_json():
+#    return jsonify({"name": "tim"})
+
+#@views.route("/data")
+#def get_data():
+#    data = request.json
+#    return jsonify(data)

@@ -12,7 +12,6 @@
 <body>
     <div>
         <h1>Welcome to the Sudoku Generator</h1>
-        <h2>Solution Toggled</h2>
     </div>
 
     <button type="button" title="Print puzzle">
@@ -43,14 +42,14 @@
 
     <form method="POST">
         <button name="checkbox" value="0">
-        <input type="hidden" name="checkbox" value="0" checked="checked" />
         <input
             class="checkbox"
-            type="checkbox" name="null" value="1" checked="checked"
+            type="checkbox" name="null" value="1" checked=checked
             onChange="this.form.submit()">
         <span>&nbsp;&nbsp;Toggle Solution</span>
         </button>
     </form>
+    <span>Solution Toggled</span>
     <br>
 
     <button type="button" title="Learn how to play&#10;(opens in popup)">
