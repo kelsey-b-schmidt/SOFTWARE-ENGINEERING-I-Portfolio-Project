@@ -12,7 +12,7 @@ def home():
         if checkbox == "1":
             with open('files/testing.txt', 'w') as file:
                 file.write("toggle-on")
-            return render_template("main.html", check_val="0", src="static/images/checkbox.png")
+            return render_template("main.html", check_val="0")
         elif checkbox == "0":
             with open('files/testing.txt', 'w') as file:
                 file.write("toggle-off")
@@ -25,7 +25,7 @@ def home():
         with open('files/testing.txt', 'w') as file:
             file.write("")
 
-    return render_template("main.html", check_val="1", src="static/images/checkbox_unchecked.png")
+    return render_template("main.html", check_val="1", src="static/images/checkbox.png")
 
 #@views.route("/json")
 #def get_json():
