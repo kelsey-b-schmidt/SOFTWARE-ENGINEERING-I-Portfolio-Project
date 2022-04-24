@@ -14,18 +14,6 @@
 <body>
     <div><h1>Welcome to the Sudoku Generator</h1></div>
 
-    <form method="POST"
-          onsubmit="return confirm('Starting a new game will erase the current game!' + '\n' + 'Do you still wish to proceed?');">
-        <button name="new_game" value="1"
-                type="submit"
-                class="button red-hover"
-                title="Erase current game">
-        <img src="static/images/new.png"/>
-            <span>&nbsp;&nbsp;New Game</span>
-        </button>
-    </form>
-    <br>
-
 
 
     <button type="button" title="Print puzzle"
@@ -73,7 +61,17 @@
     <br>
 
 
-
+    <form method="POST"
+          onsubmit="return confirm('Starting a new game will erase the current game!' + '\n' + 'Do you still wish to proceed?');">
+        <button name="new_game" value="1"
+                type="submit"
+                class="button red-hover"
+                title="Erase current game">
+        <img src="static/images/new.png"/>
+            <span>&nbsp;&nbsp;New Game</span>
+        </button>
+    </form>
+    <br>
 
 
 

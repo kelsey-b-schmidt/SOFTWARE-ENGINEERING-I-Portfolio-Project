@@ -27,8 +27,8 @@ def new_game_get():
 def new_game_post():
     checkbox = request.form.get('checkbox')
     new_game = request.form.get('new_game')
-    with open('files/button_receiver.txt', 'w') as file:
-        file.write("new_game")
+    #with open('../files/button_receiver.txt', 'w') as file:
+    #    file.write("new_game")
     puzzle_id = random.randint(1, 1000)
     puzzle = board_maker()
     db.boards.insert_one({'puzzle_id': puzzle_id, 'puzzle': puzzle})
@@ -36,7 +36,7 @@ def new_game_post():
     if checkbox == "1":
         # with open('files/button_receiver.txt', 'w') as file:
         # file.write("toggle-on")
-        return render_template("new_game.html", check_val="0", src="static/images/checkbox.png")
+        return render_template("new_game.html", check_val="0", src="../static/images/checkbox.png")
     # elif checkbox == "0":
     # with open('files/button_receiver.txt', 'w') as file:
     # file.write("toggle-off")
@@ -47,10 +47,10 @@ def new_game_post():
     # else:
     #    with open('files/button_receiver.txt', 'w') as file:
     #        file.write("")
-    return render_template("new_game.html", check_val="1", src="static/images/checkbox_unchecked.png")
+    return render_template("new_game.html", check_val="1", src="../static/images/checkbox_unchecked.png")
 
 
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True,port=5000)
