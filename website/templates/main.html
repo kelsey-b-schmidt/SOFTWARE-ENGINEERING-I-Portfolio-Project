@@ -9,61 +9,12 @@
     <link rel="stylesheet" href="static/css/main.css">
 </head>
 
+
+
 <body>
     <div><h1>Welcome to the Sudoku Generator</h1></div>
 
-    <button type="button" title="Print puzzle">
-        <img src="static/images/printer.png" />
-        <span>&nbsp;&nbsp;Print</span>
-    </button>
-    <br>
-    <br>
-
-    <button type="button" title="Download puzzle as PDF">
-        <img src="static/images/download.png"/>
-        <span>&nbsp;&nbsp;Download</span>
-    </button>
-    <br>
-    <br>
-
-    <button class="facebook" type="button" title="Share to Facebook&#10;(opens in new window)"
-    onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2F&amp;src=sdkpreparse',
-                     'newwindow',
-                     'width=500,height=500');
-          return false;">
-        <img src="static/images/facebook.png"/>
-        <span>&nbsp;&nbsp;Share</span>
-    </button>
-    <br>
-    <br>
-
-
-
-    <button type="button" title="Print puzzle">
-        <img src="static/images/printer.png" />
-        <span>&nbsp;&nbsp;Print</span>
-    </button>
-    <br>
-    <br>
-
-    <form method="POST">
-        <button name="checkbox" value={{check_val}}
-                type="submit"
-                title="Show/Hide the solution">
-        <img src={{src}}/>
-            <span>&nbsp;&nbsp;Toggle Solution</span>
-        </button>
-    </form>
-    <br>
-
-    <button type="button" title="Learn how to play&#10;(opens in popup)">
-        <img src="static/images/help.png"/>
-        <span>&nbsp;&nbsp;How to Play</span>
-    </button>
-    <br>
-    <br>
-
-    <form method="POST" onsubmit="return confirm('Starting a new game will erase the current game!' + '\n' + 'Do you still wish to proceed?');">
+    <form method="POST" action="/new_game">
         <button name="new_game" value="1"
                 type="submit"
                 class="button red-hover"
@@ -72,6 +23,20 @@
             <span>&nbsp;&nbsp;New Game</span>
         </button>
     </form>
+    <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <footer>
     Uicons by <a href="https://www.flaticon.com/uicons" target="_blank">Flaticon</a>
