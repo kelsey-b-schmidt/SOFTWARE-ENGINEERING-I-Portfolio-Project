@@ -5,10 +5,10 @@ const PORT = 3000
 app.use(express.json()) // The content-type of the response must be set to application/json.
 
 /**
- * Create a new sudoku with the puzzle and puzzle_solved provided in the body
+ * Create a new sudoku with the puzzle_unsolved, puzzle_solved, provided in the body
  */
 app.post('/sudokus', (req, res) => {
-    sudokus.createSudoku(req.body.puzzle, req.body.puzzle_solved)
+    sudokus.createSudoku( req.body.puzzle_unsolved, req.body.puzzle_solved)
         .then(sudoku => {
             res.status(201).json(sudoku)
         })
@@ -22,7 +22,7 @@ app.post('/sudokus', (req, res) => {
  * Retrieve all sudokus.
  */
 app.get('/sudokus', (req, res) => {
-    let filter = {}
+    let filter = {_id: "62674fce441cce548879cc6c"}
     sudokus.findSudokus(filter, '', 0)
         .then(sudokus => {
             res.status(200).json(sudokus)
@@ -37,13 +37,13 @@ app.get('/sudokus', (req, res) => {
  * Update the sudoku whose id is provided in the path parameter,
  * and set its parameters to the values provided in the body.
  */
- app.put('/sudokus/:_id', (req, res) => {
-    sudokus.replaceSudoku(req.params._id, req.body.puzzle, req.body.puzzle_solved)
+app.put('/sudokus/:_id', (req, res) => {
+    sudokus.replaceSudoku(req.params._id, req.body.puzzle_unsolved, req.body.puzzle_solved)
         .then(numUpdated => {
             if (numUpdated === 1) {
-                res.status(200).json({ _id: req.params._id, puzzle: req.body.puzzle, puzzle_solved: req.body.puzzle_solved})
+                res.status(200).json({ _id: req.params._id, puzzle_unsolved: req.body.puzzle_unsolved, puzzle_solved: req.body.puzzle_solved })
             } else {
-                res.status(404).json({ Error: 'Sudoku not found' })
+                res.status(404).json({ Error: 'SudokuRow not found' })
             }
         })
         .catch( (error) => {
@@ -61,7 +61,7 @@ app.delete('/sudokus/:id', (req, res) => {
             if (deletedCount === 1) {
                 res.status(204).send()
             } else {
-                res.status(404).json({ Error: 'Sudoku not found' })
+                res.status(404).json({ Error: 'SudokuRow not found' })
             }
         })
         .catch( (error) => {

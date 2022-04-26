@@ -1,6 +1,7 @@
 import random
 from random import shuffle
-
+import pymongo
+from tabulate import tabulate
 
 def board_maker():
     choices = []
@@ -66,7 +67,7 @@ def board_maker():
                 break
             row += 1
 
-    return board
+    print(tabulate(board, tablefmt="html"))
 
 if __name__ == "__main__":
     board_maker()

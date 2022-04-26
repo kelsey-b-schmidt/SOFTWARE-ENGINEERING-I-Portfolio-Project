@@ -1,9 +1,9 @@
 // Get the mongoose object
 import mongoose from 'mongoose'
 
-// Prepare to the database 'sudoku' in the MongoDB server running locally on port 27017
+// Prepare to the database sudokus_db in the MongoDB server running locally on port 27017
 mongoose.connect(
-    "mongodb://localhost:27017/sudoku",
+    "mongodb://localhost:27017/sudokus",
     { useNewUrlParser: true, useUnifiedTopology: true }
 )
 
@@ -15,18 +15,14 @@ db.once("open", () => {
     console.log("Successfully connected to MongoDB using Mongoose!")
 })
 
-
-
-
-
 /**
  * Define the schema
- */ 
+ */
 const sudokuSchema = mongoose.Schema({
-    puzzle: { type: Array },
-    puzzle_solved: { type: Array }
-},
-{ versionKey: false }
+        puzzle_unsolved: { type: Number, min: 0, max: 1000, required: true },
+        puzzle_solved: { type: Number, min: 0, max: 1000, required: true }
+    },
+    { versionKey: false }
 )
 
 /**
@@ -35,23 +31,23 @@ const sudokuSchema = mongoose.Schema({
 const Sudoku = mongoose.model("Sudoku", sudokuSchema)
 
 /**
- * Creates a sudoku board with the given parameters.
- * @param puzzle
+ * Creates an sudoku with the given parameters.
+ * @param puzzle_unsolved
  * @param puzzle_solved
  * @returns A promise. Resolves to the JSON object for the document created by calling save
  */
-const createSudoku = async (puzzle, puzzle_solved) => {
-    // Call the constructor to create an instance of the model class Sudoku
-    const sudoku = new Sudoku({ puzzle: puzzle, puzzle_solved: puzzle_solved })
+const createSudoku = async (puzzle_unsolved, puzzle_solved) => {
+    // Call the constructor to create an instance of the model class SudokuRow
+    const sudoku = new Sudoku({ puzzle_unsolved: puzzle_unsolved, puzzle_solved: puzzle_solved })
     // Call save to persist this object as a document in MongoDB
     return sudoku.save()
 }
 
 /**
- * Find sudoku boards with the given parameters.
- * @param filter 
- * @param projection 
- * @param limit 
+ * Find sudokus with the given parameters.
+ * @param filter
+ * @param projection
+ * @param limit
  * @returns A promise. Resolves to an array of JSON objects matching the query.
  */
 const findSudokus = async (filter, projection, limit) => {
@@ -63,20 +59,20 @@ const findSudokus = async (filter, projection, limit) => {
 
 /**
  * Updates a given sudoku with new parameters.
- * @param _id 
- * @param puzzle
+ * @param _id
+ * @param puzzle_unsolved
  * @param puzzle_solved
  * @returns A promise. Resolves to the number of documents modified.
  */
-const replaceSudoku = async (_id, puzzle, puzzle_solved) => {
+const replaceSudoku = async (_id, puzzle_unsolved, puzzle_solved) => {
     const result = await Sudoku.replaceOne({ _id: _id },
-        { puzzle: puzzle, puzzle_solved: puzzle_solved }, {runValidators: true})
+        { puzzle_unsolved: puzzle_unsolved, puzzle_solved: puzzle_solved }, {runValidators: true})
     return result.modifiedCount
 }
 
 /**
  * Delete the sudoku with provided id value
- * @param _id 
+ * @param _id
  * @returns A promise. Resolves to the count of deleted documents.
  */
 const deleteById = async (_id) => {
