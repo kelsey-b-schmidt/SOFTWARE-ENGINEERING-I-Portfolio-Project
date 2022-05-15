@@ -1,7 +1,7 @@
-import random
-from random import shuffle
-import pymongo
-from tabulate import tabulate
+import requests
+
+def random_number_microservice(numbers):
+    return requests.post('http://127.0.0.1:8000/api', json={"numbers": numbers}).json()["number"]
 
 def board_maker():
     choices = []
@@ -60,14 +60,14 @@ def board_maker():
 
                 if choices == []:
                     break
-                number = random.choice(choices)
+                number = random_number_microservice(choices)    # call microservice for random number
                 board[row][column] = number
                 column += 1
             if choices == []:
                 break
             row += 1
 
-    print(tabulate(board, tablefmt="html"))
+    return board
 
 if __name__ == "__main__":
-    board_maker()
+    pass

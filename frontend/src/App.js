@@ -1,6 +1,5 @@
-import React, { useSate, useEffect } from 'react'
-import { Helmet } from "react-helmet"
 import './App.css'
+import HelmetComponent from "./components/HelmetComponent";
 import HeaderComponent from './components/HeaderComponent'
 import PrintButtonComponent from './components/PrintButtonComponent'
 import DownloadButtonComponent from './components/DownloadButtonComponent'
@@ -9,42 +8,24 @@ import ToggleSolutionButtonComponent from './components/ToggleSolutionButtonComp
 import HowToPlayButtonComponent from './components/HowToPlayButtonComponent'
 import NewGameButtonComponent from './components/NewGameButtonComponent'
 import FooterComponent from './components/FooterComponent'
+import PuzzleComponent from "./components/PuzzleComponent";
 
 function App() {
 
+
+
     return (
         <div>
-            <Helmet htmlAttributes>
-                <title>Sudoku Generator</title>
-            </Helmet>
+            <HelmetComponent/>
             <HeaderComponent/>
 
+            <br/>
+
             <div class="puzzle_and_buttons">
-                <table>
-                    <tbody>
-                        <tr><td >4</td><td >6</td><td >1</td><td >3</td><td >5
-                        </td><td >2</td><td >7</td><td >9</td><td >8</td></tr>
-                        <tr><td >9</td><td >5</td><td >8</td><td >7</td><td >6
-                        </td><td >1</td><td >2</td><td >4</td><td >3</td></tr>
-                        <tr><td >3</td><td >2</td><td >7</td><td >4</td><td >8
-                        </td><td >9</td><td >6</td><td >1</td><td >5</td></tr>
-                        <tr><td >2</td><td >3</td><td >5</td><td >6</td><td >1
-                        </td><td >8</td><td >4</td><td >7</td><td >9</td></tr>
-                        <tr><td >7</td><td >8</td><td >6</td><td >5</td><td >9
-                        </td><td >4</td><td >3</td><td >2</td><td >1</td></tr>
-                        <tr><td >1</td><td >9</td><td >4</td><td >2</td><td >7
-                        </td><td >3</td><td >5</td><td >8</td><td >6</td></tr>
-                        <tr><td >8</td><td >7</td><td >3</td><td >9</td><td >4
-                        </td><td >6</td><td >1</td><td >5</td><td >2</td></tr>
-                        <tr><td >5</td><td >1</td><td >2</td><td >8</td><td >3
-                        </td><td >7</td><td >9</td><td >6</td><td >4</td></tr>
-                        <tr><td >6</td><td >4</td><td >9</td><td >1</td><td >2
-                        </td><td >5</td><td >8</td><td >3</td><td >7</td></tr>
-                    </tbody>
-                </table>
-                <br/>
-                <br/>
+                <PuzzleComponent/>
                 <div>
+                    <br/>
+                    <br/>
                     <br/>
                     <br/>
                     <PrintButtonComponent/>
@@ -54,6 +35,8 @@ function App() {
                     <br/>
                     <br/>
                     <FacebookButtonComponent/>
+                    <br/>
+                    <br/>
                     <br/>
                     <br/>
                 </div>
@@ -74,3 +57,4 @@ function App() {
 }
 
 export default App
+
