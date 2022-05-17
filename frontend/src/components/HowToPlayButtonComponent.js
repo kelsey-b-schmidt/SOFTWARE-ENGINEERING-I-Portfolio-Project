@@ -1,6 +1,6 @@
 import React from 'react'
 
-function HowToPlayButtonComponent (){
+export default function HowToPlayButtonComponent (){
     return (
 
         <button type="button"
@@ -18,11 +18,9 @@ function HowToPlayButtonComponent (){
                     '\nto share the puzzle with friends!'
                 )}}
         >
-            <img src={require(".//images/help.png")} alt="Question Mark"/>
+            <img src="help.png" alt="Question Mark"/>
             <span>&nbsp;&nbsp;How to Play</span>
         </button>
     )
 }
-
-export default HowToPlayButtonComponent;
 

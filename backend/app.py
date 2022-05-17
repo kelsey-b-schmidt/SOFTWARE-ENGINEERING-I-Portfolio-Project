@@ -1,34 +1,34 @@
-from flask import Flask, request
-from datetime import datetime
-import time
-import json
-import random
+from flask import Flask
 import requests
 from board_maker import board_maker
 
 app = Flask(__name__)
 
-message = []
+current_board = []
 
 def create_board():
-    global message
+    global current_board
     try:
-        message = board_maker()
+        current_board = board_maker()
     except:
         pass
-    return message
 
 @app.route("/board", methods = ["GET"])
 def get_board():
-    global message
-    while message == []:
+    global current_board
+    while current_board == []:
         create_board()
-    return {"message": message}
+    return {"current_board": current_board}
 
 @app.route("/board", methods = ["POST"])
 def new_board():
-    create_board()
-    return {"message": message}
+    global current_board
+    current_board = []
+    while current_board == []:
+        create_board()
+    return {"current_board": current_board}
+
+
 
 
 if __name__ == "__main__":

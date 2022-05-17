@@ -1,7 +1,7 @@
 import React from 'react'
 import Clock from 'react-live-clock'
 
-function FooterComponent (){
+export default function FooterComponent (){
     return (
         <footer>
             The current time is <Clock format="HH:mm:ss" interval={1000} ticking={true} />
@@ -10,5 +10,3 @@ function FooterComponent (){
         </footer>
     )
 }
-
-export default FooterComponent

@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import './App.css'
 import HelmetComponent from "./components/HelmetComponent";
 import HeaderComponent from './components/HeaderComponent'
@@ -8,21 +9,24 @@ import ToggleSolutionButtonComponent from './components/ToggleSolutionButtonComp
 import HowToPlayButtonComponent from './components/HowToPlayButtonComponent'
 import NewGameButtonComponent from './components/NewGameButtonComponent'
 import FooterComponent from './components/FooterComponent'
-import PuzzleComponent from "./components/PuzzleComponent";
+import PuzzleComponent from "./components/PuzzleComponent"
 
-function App() {
+export default function App() {
 
-
+    const [board, setBoard] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     return (
         <div>
             <HelmetComponent/>
             <HeaderComponent/>
-
-            <br/>
-
             <div class="puzzle_and_buttons">
-                <PuzzleComponent/>
+                <PuzzleComponent
+                    board={board}
+                    setBoard={setBoard}
+                    isLoading={isLoading}
+                    setIsLoading={setIsLoading}
+                />
                 <div>
                     <br/>
                     <br/>
@@ -46,7 +50,10 @@ function App() {
                 <br/>
                 <HowToPlayButtonComponent/>
                 <br/>
-                <NewGameButtonComponent/>
+                <NewGameButtonComponent
+                    setBoard={setBoard}
+                />
+
             </div>
             <br/>
             <FooterComponent/>
@@ -56,5 +63,4 @@ function App() {
     )
 }
 
-export default App
 

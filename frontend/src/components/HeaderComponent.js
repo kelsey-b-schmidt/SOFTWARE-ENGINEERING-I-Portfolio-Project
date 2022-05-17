@@ -1,11 +1,9 @@
 import React from 'react'
 
-function HeaderComponent (){
+export default function HeaderComponent (){
     return (
         <header>
             <h1>Welcome to the Sudoku Generator</h1>
         </header>
     )
 }
-
-export default HeaderComponent;
