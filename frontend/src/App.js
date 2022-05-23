@@ -1,66 +1,87 @@
 import React, {useState} from 'react'
 import './App.css'
-import HelmetComponent from "./components/HelmetComponent";
 import HeaderComponent from './components/HeaderComponent'
 import PrintButtonComponent from './components/PrintButtonComponent'
-import DownloadButtonComponent from './components/DownloadButtonComponent'
-import FacebookButtonComponent from './components/FacebookButtonComponent'
 import ToggleSolutionButtonComponent from './components/ToggleSolutionButtonComponent'
 import HowToPlayButtonComponent from './components/HowToPlayButtonComponent'
 import NewGameButtonComponent from './components/NewGameButtonComponent'
 import FooterComponent from './components/FooterComponent'
 import PuzzleComponent from "./components/PuzzleComponent"
+import PrintPageComponent from "./components/PrintPageComponent";
 
 export default function App() {
 
-    const [board, setBoard] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
+    const [unsolvedBoard, setUnsolvedBoard] = useState([
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""]
+    ])
+    const [solvedBoard, setSolvedBoard] = useState([
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""]
+    ])
+    const [type, setType] = useState("unsolved")
+    const [toggled, setToggled] = React.useState(false)
 
     return (
         <div>
-            <HelmetComponent/>
-            <HeaderComponent/>
-            <div class="puzzle_and_buttons">
+            <div class="no-print">
+                <HeaderComponent/>
                 <PuzzleComponent
-                    board={board}
-                    setBoard={setBoard}
-                    isLoading={isLoading}
-                    setIsLoading={setIsLoading}
+                    type={type}
+                    unsolvedBoard={unsolvedBoard}
+                    solvedBoard={solvedBoard}
                 />
-                <div>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
+                <div class="no-print">
+                    <ToggleSolutionButtonComponent
+                        type={type}
+                        setType={setType}
+                        toggled={toggled}
+                        setToggled={setToggled}
+                    />
+                    <HowToPlayButtonComponent/>
                     <PrintButtonComponent/>
-                    <br/>
-                    <br/>
-                    <DownloadButtonComponent/>
-                    <br/>
-                    <br/>
-                    <FacebookButtonComponent/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                </div>
-            </div>
-            <div>
-                <ToggleSolutionButtonComponent/>
-                <br/>
-                <HowToPlayButtonComponent/>
-                <br/>
-                <NewGameButtonComponent
-                    setBoard={setBoard}
-                />
 
+                </div>
+                <NewGameButtonComponent
+                    setType={setType}
+                    setToggled={setToggled}
+                    setUnsolvedBoard={setUnsolvedBoard}
+                    setSolvedBoard={setSolvedBoard}
+                />
+            </div>
+            <div class="print">
+                <PrintPageComponent
+                    unsolvedBoard={unsolvedBoard}
+                    solvedBoard={solvedBoard}/>
             </div>
             <br/>
             <FooterComponent/>
-            <br/>
-            <br/>
         </div>
     )
 }
+
+
+
+
+
+
+
+
+
+
 
 

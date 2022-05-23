@@ -4,6 +4,7 @@ export default function HowToPlayButtonComponent (){
     return (
 
         <button type="button"
+                id="button"
                 title="Learn how to play&#10;(opens in popup)"
                 onClick={() => {window.alert('How to play:' +
                     '\nEach number 1-9 must be placed only once' +
@@ -13,9 +14,11 @@ export default function HowToPlayButtonComponent (){
                     'Controls:' +
                     '\nYou can press "Toggle Solution" to see the solution,' +
                     '\nand press it again to go back to the unsolved puzzle. ' +
-                    '\nYou can press "New Game" to generate a new puzzle.' +
-                    '\nYou can press "Print", "Download", or "Share" ' +
-                    '\nto share the puzzle with friends!'
+                    '\nYou can press "How to Play" to come back to these instructions.' +
+                    '\nYou can press "Print" to generate the puzzle and solution' +
+                    '\non a printable page.' +
+                    '\nYou can press "New Game" to generate a new puzzle. ' +
+                    '\n(This erases the current puzzle!)'
                 )}}
         >
             <img src="help.png" alt="Question Mark"/>

@@ -1,42 +1,57 @@
 body{
   background-color: ghostwhite;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  font: 14px Helvetica;
 }
 
 div {
-  display: grid;
-  margin: 5px auto;
+  margin: auto;
+}
+
+button {
+  background-color: white;
+  margin: 3px;
+  width: 150px;
+  padding: 10px 13px 10px 8px;
+  box-shadow: 0 2px 3px gray;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button > img,
+button > span {
+  vertical-align: middle;
 }
 
 
 
-div.puzzle_and_buttons {
-  margin: 0;
-  display: inline-flex;
 
-}
 
-a {
-  color: black;
 
-}
 
-a:link { text-decoration: none; }
+
+
+
+
+
+
+
+
+
 
 
 a:visited { text-decoration: none; }
 
-
 a:hover { text-decoration: none; }
 
-
 a:active { text-decoration: none; }
-
-
 
 table {
   border-collapse: collapse;
   background-color: white;
-  margin: 20px;
+  margin-bottom: 5px;
 }
 td {
   height:30px;
@@ -46,57 +61,62 @@ td {
 }
 td:first-child {
   border-left:solid;
+  border-left-width: thick;
 }
 td:nth-child(3n) {
   border-right:solid ;
+  border-right-width: thick;
 }
 tr:first-child {
   border-top:solid;
+  border-top-width: thick;
 }
 tr:nth-child(3n) td {
   border-bottom:solid ;
-}
-
-button {
-  background-color: white;
-  width: 150px;
-  text-align: center;
-  padding: 10px 13px 10px 8px;
-  box-shadow: 0 2px 3px gray;
-  border-radius: 4px;
-  color: black;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-button > img,
-button > input,
-button > span {
-  vertical-align: middle;
+  border-bottom-width: thick;
 }
 
 button:hover, input:hover {
   background-color: LightGreen;
 }
 
-.red-hover:hover {
+.green:hover {
+  background-color: lightgreen;
+}
+
+.orange:hover {
+  background-color: orange;
+}
+
+.red:hover {
   background-color: red;
 }
 
-input {
-  cursor: pointer;
+#red-hover:hover {
+  background-color: red;
 }
 
-header {
-  text-align: center
+.footer {
+  display: inline;
 }
 
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: black;
-  background-color: ghostwhite;
-  text-align: center;}
+.no-print {
+  display: grid;
+}
 
+.print {
+  display: none;
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+  .print {
+    display: grid;
+  }
+
+  .footer {
+    display: none;
+  }
+}
