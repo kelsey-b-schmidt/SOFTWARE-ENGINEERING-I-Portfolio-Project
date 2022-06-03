@@ -8,6 +8,9 @@ import NewGameButtonComponent from './components/NewGameButtonComponent'
 import FooterComponent from './components/FooterComponent'
 import PuzzleComponent from "./components/PuzzleComponent"
 import PrintPageComponent from "./components/PrintPageComponent";
+import PageColorComponent from "./components/PageColorComponent";
+import {useEffect} from "react";
+import CheckSolutionComponent from "./components/CheckSolutionComponent";
 
 export default function App() {
 
@@ -33,37 +36,63 @@ export default function App() {
         ["","","","","","","","",""],
         ["","","","","","","","",""]
     ])
-    const [type, setType] = useState("unsolved")
+    const [submission, setSubmission] = useState([
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""],
+        ["","","","","","","","",""]
+    ])
     const [toggled, setToggled] = React.useState(false)
 
+    useEffect(() => {
+        const getBoard = async () => {
+            const response = await fetch("/board")
+            const response_json = await response.json()
+            setUnsolvedBoard(response_json.unsolved_board)
+            setSolvedBoard(response_json.solved_board)
+        }
+        getBoard().then()
+    }, [setSolvedBoard,setUnsolvedBoard])
+
     return (
-        <div>
-            <div class="no-print">
+        <div class="all">
+            <div class="grid">
                 <HeaderComponent/>
                 <PuzzleComponent
-                    type={type}
                     unsolvedBoard={unsolvedBoard}
                     solvedBoard={solvedBoard}
+                    submission={submission}
+                    setSubmission={setSubmission}
                 />
-                <div class="no-print">
+                <div>
                     <ToggleSolutionButtonComponent
-                        type={type}
-                        setType={setType}
                         toggled={toggled}
                         setToggled={setToggled}
                     />
-                    <HowToPlayButtonComponent/>
-                    <PrintButtonComponent/>
-
+                    <CheckSolutionComponent
+                        solvedBoard={solvedBoard}
+                        submission={submission}/>
+                    <div>
+                        <HowToPlayButtonComponent/>
+                        <PrintButtonComponent/>
+                    </div>
                 </div>
                 <NewGameButtonComponent
-                    setType={setType}
                     setToggled={setToggled}
                     setUnsolvedBoard={setUnsolvedBoard}
                     setSolvedBoard={setSolvedBoard}
                 />
+                <br/>
+                <PageColorComponent
+                />
+
             </div>
-            <div class="print">
+            <div class="no-grid">
                 <PrintPageComponent
                     unsolvedBoard={unsolvedBoard}
                     solvedBoard={solvedBoard}/>

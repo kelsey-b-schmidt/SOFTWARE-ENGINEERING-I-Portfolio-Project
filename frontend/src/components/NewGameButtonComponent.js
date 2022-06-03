@@ -1,21 +1,9 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 export default function NewGameButtonComponent (
-    {setType, setToggled, setUnsolvedBoard, setSolvedBoard}){
+    {setToggled, setUnsolvedBoard, setSolvedBoard}){
 
-
-
-    useEffect(() => {
-        const getBoard = async () => {
-            const response = await fetch("/board")
-            const response_json = await response.json()
-            setUnsolvedBoard(response_json.unsolved_board)
-            setSolvedBoard(response_json.solved_board)
-        }
-        getBoard().then()
-    }, [setSolvedBoard,setUnsolvedBoard])
-
-    const handleSubmitEasy = () => {
+    const handleSubmit = (difficulty) => {
         const newBoard = async () => {
             const response = await fetch("/board",{
                 method: "POST",
@@ -23,14 +11,15 @@ export default function NewGameButtonComponent (
                     'Content-Type': 'application/json;charset=utf-8'
                 },
                 body: JSON.stringify({
-                    difficulty: "easy"
+                    difficulty: difficulty
                 })
             })
             const response_json = await response.json()
             setUnsolvedBoard(response_json.unsolved_board)
             setSolvedBoard(response_json.solved_board)
-            setType("unsolved")
             setToggled(false)
+            document.getElementById("solvedPuzzleTable").style.display = "none";
+            document.getElementById("unsolvedPuzzleTable").style.display = "grid";
         }
         const answer = window.confirm("Starting a new game will erase the current game!\n" +
             "Do you still wish to proceed?")
@@ -38,55 +27,6 @@ export default function NewGameButtonComponent (
             newBoard().then()
         }
     }
-
-    const handleSubmitMedium = () => {
-        const newBoard = async () => {
-            const response = await fetch("/board",{
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify({
-                    difficulty: "medium"
-                })
-            })
-            const response_json = await response.json()
-            setUnsolvedBoard(response_json.unsolved_board)
-            setSolvedBoard(response_json.solved_board)
-            setType("unsolved")
-            setToggled(false)
-        }
-        const answer = window.confirm("Starting a new game will erase the current game!\n" +
-            "Do you still wish to proceed?")
-        if (answer) {
-            newBoard().then()
-        }
-    }
-
-    const handleSubmitHard = () => {
-        const newBoard = async () => {
-            const response = await fetch("/board",{
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
-                body: JSON.stringify({
-                    difficulty: "hard"
-                })
-            })
-            const response_json = await response.json()
-            setUnsolvedBoard(response_json.unsolved_board)
-            setSolvedBoard(response_json.solved_board)
-            setType("unsolved")
-            setToggled(false)
-        }
-        const answer = window.confirm("Starting a new game will erase the current game!\n" +
-            "Do you still wish to proceed?")
-        if (answer) {
-            newBoard().then()
-        }
-    }
-
 
     return (
         <div>
@@ -96,25 +36,24 @@ export default function NewGameButtonComponent (
                 <button
                     class="green"
                     title="Start a new Easy game"
-                    onClick={handleSubmitEasy}
+                    onClick={() => handleSubmit("easy")}
                 >
                     <span>Easy</span>
                 </button>
                 <button
                     class="orange"
                     title="Start a new Medium game"
-                    onClick={handleSubmitMedium}
+                    onClick={() => handleSubmit("medium")}
                 >
                     <span>Medium</span>
                 </button>
                 <button
                     class="red"
                     title="Start a new Hard game"
-                    onClick={handleSubmitHard}
+                    onClick={() => handleSubmit("hard")}
                 >
                     <span>Hard</span>
                 </button>
-
             </div>
         </div>
     )

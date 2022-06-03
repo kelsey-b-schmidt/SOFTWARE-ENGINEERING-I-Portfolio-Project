@@ -3,27 +3,39 @@ import React from 'react'
 export default function PrintPageComponent (
     {unsolvedBoard, solvedBoard}){
     return (
-        <div >
+        <div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <table>
                 <caption>Puzzle</caption>
-                <tbody>
-                {unsolvedBoard.map((item) => {
+                {unsolvedBoard.map((row) => {
                     return (
                         <tr>
-                            <td>{item[0]}</td>
-                            <td>{item[1]}</td>
-                            <td>{item[2]}</td>
-                            <td>{item[3]}</td>
-                            <td>{item[4]}</td>
-                            <td>{item[5]}</td>
-                            <td>{item[6]}</td>
-                            <td>{item[7]}</td>
-                            <td>{item[8]}</td>
+                            {row.map((cell) => {
+                                if (cell > 0) {
+                                    return (
+                                        <td id="color">{cell}</td>
+                                    )
+                                }
+                                else {
+                                    return (
+                                        <td>{cell}</td>
+                                    )
+                                }
+                            })}
                         </tr>
                     )
                 })}
-                </tbody>
             </table>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <br/>
             <br/>
             <br/>
@@ -38,24 +50,33 @@ export default function PrintPageComponent (
             <br/>
             <table>
                 <caption>Solution</caption>
-                <tbody>
-                {solvedBoard.map((item) => {
+                {solvedBoard.map((row, index1) => {
                     return (
                         <tr>
-                            <td>{item[0]}</td>
-                            <td>{item[1]}</td>
-                            <td>{item[2]}</td>
-                            <td>{item[3]}</td>
-                            <td>{item[4]}</td>
-                            <td>{item[5]}</td>
-                            <td>{item[6]}</td>
-                            <td>{item[7]}</td>
-                            <td>{item[8]}</td>
+                            {row.map((cell, index2) => {
+                                if (unsolvedBoard[index1][index2] === solvedBoard[index1][index2]) {
+                                    return (
+                                        <td id="color">{cell}</td>
+                                    )
+                                } else {
+                                    return (
+                                        <td>{cell}</td>
+                                    )
+                                }
+                            })}
                         </tr>
                     )
                 })}
-                </tbody>
             </table>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
             <br/>
             <br/>
             <br/>

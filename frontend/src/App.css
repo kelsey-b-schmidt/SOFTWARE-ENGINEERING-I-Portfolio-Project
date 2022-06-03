@@ -1,9 +1,9 @@
 body{
-  background-color: ghostwhite;
   text-align: center;
   vertical-align: middle;
   margin: auto;
   font: 14px Helvetica;
+  -webkit-print-color-adjust: exact !important;
 }
 
 div {
@@ -26,21 +26,13 @@ button > span {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.input {
+  width: 28px;
+  height: 28px;
+  border: white;
+  text-align: center;
+  padding: 0px;
+}
 
 a:visited { text-decoration: none; }
 
@@ -49,6 +41,7 @@ a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
 
 table {
+  table-layout: fixed;
   border-collapse: collapse;
   background-color: white;
   margin-bottom: 5px;
@@ -76,6 +69,10 @@ tr:nth-child(3n) td {
   border-bottom-width: thick;
 }
 
+#color {
+  background-color: lightblue;
+}
+
 button:hover, input:hover {
   background-color: LightGreen;
 }
@@ -96,23 +93,41 @@ button:hover, input:hover {
   background-color: red;
 }
 
+#solvedPuzzleTable {
+  display: none;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .footer {
   display: inline;
 }
 
-.no-print {
+.grid {
   display: grid;
 }
 
-.print {
+.no-grid {
   display: none;
 }
 
+
 @media print {
-  .no-print {
+
+  .all {
+    background-color: white !important;
+  }
+
+
+  .grid {
     display: none;
   }
-  .print {
+  .no-grid {
     display: grid;
   }
 
@@ -120,3 +135,4 @@ button:hover, input:hover {
     display: none;
   }
 }
+

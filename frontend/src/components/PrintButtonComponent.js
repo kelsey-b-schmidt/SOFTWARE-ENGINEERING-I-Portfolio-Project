@@ -4,10 +4,10 @@ export default function PrintButtonComponent (){
     return (
         <button type="button"
                 id="button" title="Print puzzle and solution"
-                onClick={window.print}>
+                onClick={window.print}
+        >
             <img src="printer.png" alt="Printer" />
             <span>&nbsp;&nbsp;Print</span>
-            <br/>
         </button>
     )
 }

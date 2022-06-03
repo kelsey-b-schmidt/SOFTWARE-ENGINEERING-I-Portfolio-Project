@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function HowToPlayButtonComponent (){
     return (
-
         <button type="button"
                 id="button"
                 title="Learn how to play&#10;(opens in popup)"
@@ -13,12 +12,14 @@ export default function HowToPlayButtonComponent (){
                     '\n' +
                     'Controls:' +
                     '\nYou can press "Toggle Solution" to see the solution,' +
-                    '\nand press it again to go back to the unsolved puzzle. ' +
-                    '\nYou can press "How to Play" to come back to these instructions.' +
+                    '\nand can press it again to go back to the unsolved puzzle. ' +
+                    '\nYou can press "How to Play" to see to these instructions.' +
                     '\nYou can press "Print" to generate the puzzle and solution' +
                     '\non a printable page.' +
-                    '\nYou can press "New Game" to generate a new puzzle. ' +
-                    '\n(This erases the current puzzle!)'
+                    '\nYou can start a New Game by clicking your preferred' +
+                    '\ndifficulty level - Easy, Medium, or Hard' +
+                    '\n(This erases the current puzzle!)' +
+                    '\nYou can change the background color by using the color picker!'
                 )}}
         >
             <img src="help.png" alt="Question Mark"/>
