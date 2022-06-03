@@ -53,8 +53,8 @@ export default function App() {
         const getBoard = async () => {
             const response = await fetch("/board")
             const response_json = await response.json()
-            setUnsolvedBoard(response_json.unsolved_board)
-            setSolvedBoard(response_json.solved_board)
+            setUnsolvedBoard(response_json["unsolved_board"])
+            setSolvedBoard(response_json["solved_board"])
         }
         getBoard().then()
     }, [setSolvedBoard,setUnsolvedBoard])

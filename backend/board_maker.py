@@ -4,11 +4,40 @@ import copy
 def random_number_microservice(choices):
     return requests.post('http://127.0.0.1:8000/api', json={"numbers": choices}).json()["number"]
 
-def remove_num(choices, num):
-    try:
-        choices.remove(num)
-    except:
-        pass
+def generate_board():
+    board = [[0 for i in range(9)] for j in range(9)]
+    choices_for_spaces = dict()
+    for i in range(81):
+        choices_for_spaces[i] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    space = 0
+    return make_choice(board, choices_for_spaces, space)
+
+def make_choice(board, choices_for_spaces, space):
+    if space ==  81:
+        return board
+
+    row = space // 9
+    column = space % 9
+
+    choices_for_spaces[space] = prune_choices(board, choices_for_spaces[space], row, column)
+
+    if choices_for_spaces[space] == []:
+        remove_row = (space - 1) // 9
+        remove_column = (space - 1) % 9
+        remove_choice = board[remove_row][remove_column]
+        board[remove_row][remove_column] = 0
+        choices_for_spaces[space] = [1,2,3,4,5,6,7,8,9]
+        remove_num(choices_for_spaces[space - 1], remove_choice)
+        return make_choice(board, choices_for_spaces, space-1)
+
+    elif len(choices_for_spaces[space]) == 1:
+        choice = choices_for_spaces[space][0]
+    else:
+        choice = random_number_microservice(choices_for_spaces[space])
+
+    board[row][column] = choice
+
+    return make_choice(board, choices_for_spaces, space+1)
 
 def prune_choices(board, choices, row, column):
     # along same column from top to current position
@@ -58,40 +87,11 @@ def prune_choices(board, choices, row, column):
 
     return choices
 
-def generate_board():
-    board = [[0 for i in range(9)] for j in range(9)]
-    choices_for_spaces = dict()
-    for i in range(81):
-        choices_for_spaces[i] = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    space = 0
-    return make_choice(board, choices_for_spaces, space)
-
-def make_choice(board, choices_for_spaces, space):
-    if space ==  81:
-        return board
-
-    row = space // 9
-    column = space % 9
-
-    choices_for_spaces[space] = prune_choices(board, choices_for_spaces[space], row, column)
-
-    if choices_for_spaces[space] == []:
-        remove_row = (space - 1) // 9
-        remove_column = (space - 1) % 9
-        remove_choice = board[remove_row][remove_column]
-        board[remove_row][remove_column] = 0
-        choices_for_spaces[space] = [1,2,3,4,5,6,7,8,9]
-        remove_num(choices_for_spaces[space - 1], remove_choice)
-        return make_choice(board, choices_for_spaces, space-1)
-
-    elif len(choices_for_spaces[space]) == 1:
-        choice = choices_for_spaces[space][0]
-    else:
-        choice = random_number_microservice(choices_for_spaces[space])
-
-    board[row][column] = choice
-
-    return make_choice(board, choices_for_spaces, space+1)
+def remove_num(choices, num):
+    try:
+        choices.remove(num)
+    except:
+        pass
 
 def remove_spaces(solved_board, difficulty):
     unsolved_board = copy.deepcopy(solved_board)
@@ -109,15 +109,6 @@ def remove_spaces(solved_board, difficulty):
             unsolved_board[i][space] = ""
             choices.remove(space)
     return unsolved_board
-
-
-if __name__ == "__main__":
-    solved_board = generate_board()
-    for item in solved_board:
-        print(item)
-    unsolved_board = remove_spaces(solved_board, "easy")
-    for item in unsolved_board:
-        print(item)
 
 
 

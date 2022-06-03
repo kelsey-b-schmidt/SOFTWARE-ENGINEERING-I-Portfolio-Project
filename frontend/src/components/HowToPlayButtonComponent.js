@@ -5,21 +5,26 @@ export default function HowToPlayButtonComponent (){
         <button type="button"
                 id="button"
                 title="Learn how to play&#10;(opens in popup)"
-                onClick={() => {window.alert('How to play:' +
-                    '\nEach number 1-9 must be placed only once' +
+                onClick={() => {window.alert('How to play Sudoku:' +
+                    '\nPlace each number 1-9 only once' +
                     '\nin each row, column, and thick outlined square.' +
+                    '\nUse the hints in the darker squares' +
+                    '\nto find where other numbers belong.' +
                     '\n' +
-                    '\n' +
-                    'Controls:' +
-                    '\nYou can press "Toggle Solution" to see the solution,' +
+                    '\nControls:' +
+                    '\nTo start playing, click on an empty square' +
+                    '\nand type the number you think fits there.' +
+                    '\nYou can press "Toggle Solution"' +
+                    '\nto peek at the solution if you need a hint,' +
                     '\nand can press it again to go back to the unsolved puzzle. ' +
-                    '\nYou can press "How to Play" to see to these instructions.' +
-                    '\nYou can press "Print" to generate the puzzle and solution' +
-                    '\non a printable page.' +
-                    '\nYou can start a New Game by clicking your preferred' +
-                    '\ndifficulty level - Easy, Medium, or Hard' +
-                    '\n(This erases the current puzzle!)' +
-                    '\nYou can change the background color by using the color picker!'
+                    '\nOnce you think you have the right answer, ' +
+                    '\nPress "Submit Solution" to check! ' +
+                    '\n' +
+                    '\nPress "How to Play" to see to these instructions again if needed.' +
+                    '\nPress "Print" to generate the puzzle and solution on a printable page.' +
+                    '\nYou can start a New Game by clicking your preferred difficulty level: ' +
+                    '\nEasy, Medium, or Hard (This erases the current puzzle!)' +
+                    '\nYou can change the background color for the page by using the color picker at the bottom of the page.'
                 )}}
         >
             <img src="help.png" alt="Question Mark"/>

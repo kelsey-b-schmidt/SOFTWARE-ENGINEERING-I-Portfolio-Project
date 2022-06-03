@@ -38,21 +38,24 @@ export default function NewGameButtonComponent (
                     title="Start a new Easy game"
                     onClick={() => handleSubmit("easy")}
                 >
-                    <span>Easy</span>
+                    <img src="easy.png" alt="Speedometer - Left, Green" />
+                    <span>&nbsp;&nbsp;Easy</span>
                 </button>
                 <button
                     class="orange"
                     title="Start a new Medium game"
                     onClick={() => handleSubmit("medium")}
                 >
-                    <span>Medium</span>
+                    <img src="medium.png" alt="Speedometer - Middle, Orange" />
+                    <span>&nbsp;&nbsp;Medium</span>
                 </button>
                 <button
                     class="red"
                     title="Start a new Hard game"
                     onClick={() => handleSubmit("hard")}
                 >
-                    <span>Hard</span>
+                    <img src="hard.png" alt="Speedometer - Right, Red" />
+                    <span>&nbsp;&nbsp;Hard</span>
                 </button>
             </div>
         </div>
