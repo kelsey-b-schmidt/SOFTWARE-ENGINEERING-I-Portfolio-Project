@@ -26,6 +26,7 @@ export default function PuzzleComponent(
 
     return (
         <div>
+            <form id="form">
             <table class="grid" id="unsolvedPuzzleTable">
                 {unsolvedBoard.map((row, index1) => {
                     return (
@@ -50,6 +51,7 @@ export default function PuzzleComponent(
                     )
                 })}
             </table>
+            </form>
             <table className="grid" id="solvedPuzzleTable">
                 {solvedBoard.map((row, index1) => {
                     return (

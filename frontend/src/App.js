@@ -11,6 +11,7 @@ import PrintPageComponent from "./components/PrintPageComponent";
 import PageColorComponent from "./components/PageColorComponent";
 import {useEffect} from "react";
 import CheckSolutionComponent from "./components/CheckSolutionComponent";
+import ClearPuzzleButtonComponent from "./components/ClearPuzzleButtonComponent";
 
 export default function App() {
 
@@ -69,6 +70,7 @@ export default function App() {
                     submission={submission}
                     setSubmission={setSubmission}
                 />
+                <br/>
                 <div>
                     <ToggleSolutionButtonComponent
                         toggled={toggled}
@@ -77,6 +79,7 @@ export default function App() {
                     <CheckSolutionComponent
                         solvedBoard={solvedBoard}
                         submission={submission}/>
+                    <ClearPuzzleButtonComponent/>
                     <div>
                         <HowToPlayButtonComponent/>
                         <PrintButtonComponent/>
