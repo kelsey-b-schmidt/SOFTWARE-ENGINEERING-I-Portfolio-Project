@@ -19,12 +19,15 @@ export default function HowToPlayButtonComponent (){
                     '\nand can press it again to go back to the unsolved puzzle. ' +
                     '\nOnce you think you have the right answer, ' +
                     '\nPress "Submit Solution" to check! ' +
+                    '\nPress "Clear Puzzle" if you want to clear the board and start over. ' +
                     '\n' +
-                    '\nPress "How to Play" to see to these instructions again if needed.' +
+                    '\nPress "How to Play" to view to these instructions.' +
                     '\nPress "Print" to generate the puzzle and solution on a printable page.' +
                     '\nYou can start a New Game by clicking your preferred difficulty level: ' +
-                    '\nEasy, Medium, or Hard (This erases the current puzzle!)' +
-                    '\nYou can change the background color for the page by using the color picker at the bottom of the page.'
+                    '\nEasy, Medium, or Hard.' +
+                    '\nYou can change the background color for the page by using the color picker at the bottom of the page.' +
+                    '\n' +
+                    '\nHave fun!'
                 )}}
         >
             <img src="help.png" alt="Question Mark"/>

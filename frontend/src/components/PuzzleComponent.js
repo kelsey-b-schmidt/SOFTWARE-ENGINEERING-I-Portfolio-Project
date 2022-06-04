@@ -9,20 +9,19 @@ export default function PuzzleComponent(
         setSubmission(newArray)
     }
 
-
-        function fillSubmissionUnsolved () {
-            let newArray = submission
-            for (let i = 0; i < 9; i++) {
-                for (let j = 0; j < 9; j++) {
-                    if (unsolvedBoard[i][j] > 0) {
-                        newArray[i][j] = unsolvedBoard[i][j]
-                    }
+    function fillSubmissionUnsolved () {
+        let newArray = submission
+        for (let i = 0; i < 9; i++) {
+            for (let j = 0; j < 9; j++) {
+                if (unsolvedBoard[i][j] > 0) {
+                    newArray[i][j] = unsolvedBoard[i][j]
                 }
             }
-            setSubmission(newArray)
         }
+        setSubmission(newArray)
+    }
 
-        fillSubmissionUnsolved()
+    fillSubmissionUnsolved()
 
     return (
         <div>

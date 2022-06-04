@@ -1,17 +1,16 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import './App.css'
 import HeaderComponent from './components/HeaderComponent'
-import PrintButtonComponent from './components/PrintButtonComponent'
+import PuzzleComponent from './components/PuzzleComponent'
 import ToggleSolutionButtonComponent from './components/ToggleSolutionButtonComponent'
+import CheckSolutionComponent from './components/CheckSolutionComponent'
+import ClearPuzzleButtonComponent from './components/ClearPuzzleButtonComponent'
 import HowToPlayButtonComponent from './components/HowToPlayButtonComponent'
+import PrintButtonComponent from './components/PrintButtonComponent'
 import NewGameButtonComponent from './components/NewGameButtonComponent'
+import PageColorComponent from './components/PageColorComponent'
+import PrintPageComponent from './components/PrintPageComponent'
 import FooterComponent from './components/FooterComponent'
-import PuzzleComponent from "./components/PuzzleComponent"
-import PrintPageComponent from "./components/PrintPageComponent";
-import PageColorComponent from "./components/PageColorComponent";
-import {useEffect} from "react";
-import CheckSolutionComponent from "./components/CheckSolutionComponent";
-import ClearPuzzleButtonComponent from "./components/ClearPuzzleButtonComponent";
 
 export default function App() {
 
@@ -48,17 +47,17 @@ export default function App() {
         ["","","","","","","","",""],
         ["","","","","","","","",""]
     ])
-    const [toggled, setToggled] = React.useState(false)
+    const [toggled, setToggled] = useState(false)
 
     useEffect(() => {
-        const getBoard = async () => {
+        async function getBoard () {
             const response = await fetch("/board")
             const response_json = await response.json()
             setUnsolvedBoard(response_json["unsolved_board"])
             setSolvedBoard(response_json["solved_board"])
         }
         getBoard().then()
-    }, [setSolvedBoard,setUnsolvedBoard])
+    }, [])
 
     return (
         <div class="all">

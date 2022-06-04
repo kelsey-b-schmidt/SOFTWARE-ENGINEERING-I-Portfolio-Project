@@ -21,9 +21,9 @@ export default function CheckSolutionComponent (
 
     return (
         <button onClick={checkSolution}
-                title="Check your entries">
+                title="Check entries">
             <img src="checkbox.png" alt="Checkbox - Checked" />
-            <span>&nbsp;&nbsp;Submit Solution</span>
+            <span>&nbsp;&nbsp;Check Solution</span>
         </button>
     )
 }

@@ -5,12 +5,8 @@ export default function PrintPageComponent (
     return (
         <div>
             <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            <span>Puzzle</span>
             <table>
-                <caption>Puzzle</caption>
                 {unsolvedBoard.map((row) => {
                     return (
                         <tr>
@@ -45,11 +41,8 @@ export default function PrintPageComponent (
             <br/>
             <br/>
             <br/>
-            <br/>
-            <br/>
-            <br/>
+            <span>Solution</span>
             <table>
-                <caption>Solution</caption>
                 {solvedBoard.map((row, index1) => {
                     return (
                         <tr>
@@ -68,19 +61,6 @@ export default function PrintPageComponent (
                     )
                 })}
             </table>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
         </div>
     )
 }
